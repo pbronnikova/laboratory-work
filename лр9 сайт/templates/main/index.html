@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ full_name }} | Портфолио</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-inner">
+        <a href="#home" class="logo">ПБ</a>
+        <nav>
+            <a href="#about-screen">О себе</a>
+            <a href="#education">Образование</a>
+            <a href="#skills">Навыки</a>
+            <a href="#projects">Проекты</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero screen" id="home">
+    <div class="hero-card">
+        <div class="hero-photo-wrap">
+            <img src="{% static 'main/photo_2026-09-06_16-04-14.jpg' %}"
+                 alt="Фото Полины" class="profile-photo">
+        </div>
+
+        <div class="hero-info">
+            <p class="eyebrow">СТУДЕНТКА · IT · 2026</p>
+            <h1>{{ full_name }}</h1>
+            <p class="profession">{{ profession }}</p>
+            <p class="about">{{ about }}</p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="button">Мои проекты ↓</a>
+                <a href="#contacts" class="button button-light">Связаться</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about-screen">
+    <div class="container">
+        <div class="section-heading">
+            <span>01</span>
+            <h2>О себе</h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="text-card">
+                <h3>Немного обо мне</h3>
+                <p>
+                    Мне 19 лет. Сейчас я учусь на первом курсе и постепенно развиваюсь
+                    в сфере информационных технологий. Мне нравится разбираться в том,
+                    как работают программы, и превращать идеи в работающие проекты.
+                </p>
+                <p>
+                    Отдельно мне интересна бьюти-сфера. Я стараюсь совмещать творческий
+                    подход с техническими знаниями и постоянно узнавать что-то новое.
+                </p>
+            </div>
+
+            <div class="facts-card">
+                <div class="fact"><span>Город</span><strong>{{ city }}</strong></div>
+                <div class="fact"><span>Возраст</span><strong>19 лет</strong></div>
+                <div class="fact"><span>Статус</span><strong>Студентка</strong></div>
+                <div class="fact"><span>Направление</span><strong>IT</strong></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="education">
+    <div class="container">
+        <div class="section-heading">
+            <span>02</span>
+            <h2>Образование</h2>
+        </div>
+
+        <div class="education-layout">
+            <div class="education-photo-card">
+                <img src="{% static 'main/education_photo.png' %}"
+                     alt="Фотография Полины" class="education-photo">
+                <p class="photo-caption">Учёба, студенческая жизнь и новые впечатления ✨</p>
+            </div>
+
+            <div class="education-content">
+                <div class="education-card">
+                    <div class="education-year">{{ education.year }}</div>
+                    <div>
+                        <h3>{{ education.university }}</h3>
+                        <p class="education-specialty">{{ education.specialty }}</p>
+                        <p>{{ education.course }} · обучение продолжается</p>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Изучаемые дисциплины</h3>
+        <div class="tag-list">
+            {% for discipline in disciplines %}
+                <span class="tag">{{ discipline }}</span>
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="skills">
+    <div class="container">
+        <div class="section-heading">
+            <span>03</span>
+            <h2>Стек технологий и навыки</h2>
+        </div>
+
+        <p class="section-intro">
+            Технологии и инструменты, которые я изучаю в университете
+            и использую в учебных проектах.
+        </p>
+
+        <div class="skills-grid">
+            {% for skill in skills %}
+                <div class="skill-card">
+                    <span class="skill-number">0{{ forloop.counter }}</span>
+                    <strong>{{ skill }}</strong>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="projects">
+    <div class="container">
+        <div class="section-heading">
+            <span>04</span>
+            <h2>Учебные проекты</h2>
+        </div>
+
+        <div class="projects">
+            {% for project in projects %}
+                <article class="project-card">
+                    <div class="project-top">
+                        <span class="project-year">{{ project.year }}</span>
+                        <span class="project-tech">{{ project.tech }}</span>
+                    </div>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section" id="interests">
+    <div class="container">
+        <div class="section-heading">
+            <span>05</span>
+            <h2>Мои интересы</h2>
+        </div>
+
+        <div class="interests-grid">
+            {% for interest in interests %}
+                <div class="interest-card">
+                    <span>{{ forloop.counter }}</span>
+                    <h3>{{ interest }}</h3>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section contact-section" id="contacts">
+    <div class="container">
+        <div class="section-heading">
+            <span>06</span>
+            <h2>Контакты</h2>
+        </div>
+
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <span>Email</span>
+                <a href="mailto:{{ email }}">{{ email }}</a>
+            </div>
+            <div class="contact-card">
+                <span>Телефон</span>
+                <a href="tel:{{ phone }}">{{ phone }}</a>
+            </div>
+            <div class="contact-card">
+                <span>GitHub</span>
+                <a href="{{ github }}" target="_blank" rel="noopener noreferrer">github.com/pbronnikova ↗</a>
+            </div>
+            <div class="contact-card">
+                <span>Telegram</span>
+                <a href="{{ telegram }}" target="_blank" rel="noopener noreferrer">@pluxuryplakkkkk ↗</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 {{ full_name }} · Сайт-портфолио на Django</p>
+</footer>
+
+</body>
+</html>

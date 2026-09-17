@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обо мне | {{ full_name }}</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+</head>
+<body>
+    <main class="page-card">
+        <a href="{% url 'home' %}" class="back-link">← Вернуться на главную</a>
+        <p class="eyebrow">ПОДРОБНАЯ ИНФОРМАЦИЯ</p>
+        <h1>Обо мне</h1>
+        <p>
+            Я студентка первого курса направления «Информационные системы и технологии».
+            Изучаю Python, Django, HTML, CSS, алгоритмы и структуры данных.
+        </p>
+        <p>
+            На этом сайте собраны мои учебные проекты, навыки, образование и контакты.
+            По мере обучения портфолио будет пополняться новыми работами.
+        </p>
+    </main>
+</body>
+</html>
